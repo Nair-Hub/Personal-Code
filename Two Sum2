@@ -1,0 +1,59 @@
+sorted Array,merge, two pointer
+code----
+
+
+import java.util.*;
+
+public class Main {
+    public int[] twoSum(int[] number, int target) {
+        int n = number.length;
+        int i = 0, j = n - 1;
+
+        while (i < j) {
+            int sum = number[i] + number[j];
+
+            if (sum == target) {
+                return new int[]{i + 1, j + 1};
+            } else if (sum < target) {
+                i++;
+            } else {
+                j--;
+            }
+        }
+        return new int[]{-1, -1};
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();  // array ka size check kiya
+        int[] number = new int[n];
+
+        for (int i = 0; i < n; i++) {  // array me values bharo
+            number[i] = sc.nextInt();
+        }
+
+        int target = sc.nextInt();  // target ko read karega
+        int[] ans = new Main().twoSum(number, target);  // ans call/return karega
+
+        System.out.println("Array size = " + n);
+        
+        System.out.print("Sorted elements = ");
+        for (int i = 0; i < n; i++) {
+            System.out.print(number[i] + (i < n - 1 ? " " : ""));
+        }
+
+        System.out.println("\nTarget = " + target);
+        System.out.println("Ans = " + ans[0] + " " + ans[1]);
+
+        sc.close();
+    }
+}
+
+5
+2 7 11 15 16
+13
+Array size = 5
+Sorted elements = 2 7 11 15 16
+Target = 13
+Ans = 1 3
